@@ -91,7 +91,8 @@ class SafariIE(SafariBaseIE):
                             (?:www\.)?(?:safaribooksonline|(?:learning\.)?oreilly)\.com/
                             (?:
                                 library/view/[^/]+/(?P<course_id>[^/]+)/(?P<part>[^/?\#&]+)\.html|
-                                videos/[^/]+/[^/]+/(?P<reference_id>[^-]+-[^/?\#&]+)
+                                (learning-paths|videos)/[^/]+/[^/]+/(?P<reference_id>[^-]+-[^/?\#&]+
+                                )
                             )
                     '''
 
@@ -121,6 +122,9 @@ class SafariIE(SafariBaseIE):
         'only_matching': True,
     }, {
         'url': 'https://www.oreilly.com/library/view/hadoop-fundamentals-livelessons/9780133392838/00_SeriesIntro.html',
+        'only_matching': True,
+    }, {
+        'url': 'https://learning.oreilly.com/learning-paths/learning-path-cissp/9780136204046/',
         'only_matching': True,
     }]
 
@@ -207,7 +211,8 @@ class SafariCourseIE(SafariBaseIE):
                             (?:
                                 library/view/[^/]+|
                                 api/v1/book|
-                                videos/[^/]+
+                                videos/[^/]+|
+                                learning-paths/[^/]+
                             )|
                             techbus\.safaribooksonline\.com
                         )
